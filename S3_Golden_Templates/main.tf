@@ -1,10 +1,6 @@
-provider "dynatrace" {
-  api_url   = var.dynatrace_api_url
-  api_token = var.dynatrace_api_token
-}
 
 resource "dynatrace_dashboard" "s3_dashboard" {
-  name = var.dashboard_name
+  name = var.tenant_vars.dashboard_name
 
   # S3 Bucket Size
   tile {
