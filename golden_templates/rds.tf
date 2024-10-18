@@ -1,14 +1,4 @@
-terraform {
-  required_providers {
-    dynatrace = {
-      version = "~> 1.0"
-      source  = "dynatrace-oss/dynatrace"
-    }
-  }
-}
-
-
-resource "dynatrace_json_dashboard" "comos_rds_dasboard" {
+resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
   contents = jsonencode(
     {
       "dashboardMetadata" : {
