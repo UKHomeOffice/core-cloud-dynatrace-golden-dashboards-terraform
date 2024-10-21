@@ -1,16 +1,7 @@
-terraform {
-  required_providers {
-    dynatrace = {
-      version = "~> 1.0"
-      source  = "dynatrace-oss/dynatrace"
-    }
-  }
-}
-
 resource "dynatrace_json_dashboard" "comos_s3_bucket" {
   contents = jsonencode({
     "dashboardMetadata": {
-      "name": "test_s3_dashboard",
+      "name": "comos_s3_bucket_terraform",
       "shared": true,
       "owner": "Dynatrace",
       "tags": [
