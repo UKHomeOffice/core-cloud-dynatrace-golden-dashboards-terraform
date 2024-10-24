@@ -38,5 +38,30 @@ variable "mks_shared" {
 variable "mks_preset" {
   type = string
 }
+variable "cloudfront_dashbaord_name" {
+  type = string
+}
+variable "cloudfront_owner_name" {
+  type = string
+}
+variable "cloudfront_shared" {
+  type = string
+}
+variable "cloudfront_preset" {
+  type = string
+}
+variable "elasticsearch_dashbaord_name" {
+  type = string
+}
+variable "elasticsearch_owner_name" {
+  type = string
+}
+variable "elasticsearch_shared" {
+  type = string
+}
+variable "elasticsearch_preset" {
+  type = string
+}
+
 
 
