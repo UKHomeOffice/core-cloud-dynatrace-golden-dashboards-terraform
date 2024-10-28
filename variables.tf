@@ -63,5 +63,17 @@ variable "elasticsearch_preset" {
   type = bool
 }
 
+variable "elasticache_owner_name" {
+  type = string
+}
+variable "elasticache_shared" {
+  type = string
+}
 
+variable "elasticache_dashbaord_name" {
+  type = string
+}
 
+variable "elasticache_preset" {
+  type = string
+}
