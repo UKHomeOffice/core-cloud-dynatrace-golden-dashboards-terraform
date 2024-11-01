@@ -26,16 +26,16 @@ variable "rds_shared" {
 variable "rds_preset" {
   type = bool
 }
-variable "mks_dashbaord_name" {
+variable "msk_dashbaord_name" {
   type = string
 }
-variable "mks_owner_name" {
+variable "msk_owner_name" {
   type = string
 }
-variable "mks_shared" {
+variable "msk_shared" {
   type = string
 }
-variable "mks_preset" {
+variable "msk_preset" {
   type = bool
 }
 variable "cloudfront_dashbaord_name" {
