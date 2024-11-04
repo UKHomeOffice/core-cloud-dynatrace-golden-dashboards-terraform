@@ -894,7 +894,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       "tileType": "HEADER",
       "configured": true,
       "bounds": {
-        "top": 912,
+        "top": 1216,
         "left": 0,
         "width": 380,
         "height": 38
@@ -907,7 +907,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 950,
+        "top": 1254,
         "left": 0,
         "width": 304,
         "height": 304
@@ -1001,7 +1001,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 950,
+        "top": 1254,
         "left": 304,
         "width": 304,
         "height": 304
@@ -1095,7 +1095,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 950,
+        "top": 1254,
         "left": 608,
         "width": 304,
         "height": 304
@@ -1195,6 +1195,194 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       },
       "metricExpressions": [
         "resolution=null&(ext:cloud.aws.es.masterReachableFromNodeMinimumByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
+      "name": "5xx",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 912,
+        "left": 0,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "5xx",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.es.5xxSumByClientId",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "SINGLE_VALUE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&(ext:cloud.aws.es.\"5xxSumByClientId\":splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
+        "resolution=null&(ext:cloud.aws.es.\"5xxSumByClientId\":splitBy():sort(value(auto,descending)):limit(20))"
+      ]
+    },
+    {
+      "name": "4xx",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 912,
+        "left": 304,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "4xx",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.es.4xxSumByClientId",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "SINGLE_VALUE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=Inf&(ext:cloud.aws.es.\"4xxSumByClientId\":splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
+        "resolution=null&(ext:cloud.aws.es.\"4xxSumByClientId\":splitBy():sort(value(auto,descending)):limit(20))"
       ]
     }
   ]
