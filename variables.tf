@@ -75,5 +75,5 @@ variable "elasticache_dashbaord_name" {
 }
 
 variable "elasticache_preset" {
-  type = string
+  type = bool
 }
