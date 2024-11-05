@@ -2,7 +2,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticache_dashboard_template" {
    contents = jsonencode(
     {
     "dashboardMetadata": {
-      "name": var.elasticache_dashbaord_name
+      "name": var.elasticache_dashboard_name
       "shared": var.elasticache_shared
       "owner": var.elasticache_owner_name
       "tags": [
