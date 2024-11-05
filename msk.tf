@@ -1,8 +1,8 @@
-resource "dynatrace_json_dashboard" "comos_msk_dasboard_terraform" {
+resource "dynatrace_json_dashboard" "comos_msk_dashboard_terraform" {
   contents = jsonencode(
     {
       "dashboardMetadata" : {
-        "name" : var.msk_dashbaord_name
+        "name" : var.msk_dashboard_name
         "shared" : var.msk_shared
         "owner" : var.msk_owner_name
         "tags" : [

@@ -35,27 +35,27 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cloudfront_dashbaord_name"></a> [cloudfront\_dashbaord\_name](#input\_cloudfront\_dashbaord\_name) | n/a | `string` | n/a | yes |
+| <a name="input_cloudfront_dashboard_name"></a> [cloudfront\_dashboard\_name](#input\_cloudfront\_dashboard\_name) | n/a | `string` | n/a | yes |
 | <a name="input_cloudfront_owner_name"></a> [cloudfront\_owner\_name](#input\_cloudfront\_owner\_name) | n/a | `string` | n/a | yes |
 | <a name="input_cloudfront_preset"></a> [cloudfront\_preset](#input\_cloudfront\_preset) | n/a | `bool` | n/a | yes |
 | <a name="input_cloudfront_shared"></a> [cloudfront\_shared](#input\_cloudfront\_shared) | n/a | `string` | n/a | yes |
-| <a name="input_elasticache_dashbaord_name"></a> [elasticache\_dashbaord\_name](#input\_elasticache\_dashbaord\_name) | n/a | `string` | n/a | yes |
+| <a name="input_elasticache_dashboard_name"></a> [elasticache\_dashboard\_name](#input\_elasticache\_dashboard\_name) | n/a | `string` | n/a | yes |
 | <a name="input_elasticache_owner_name"></a> [elasticache\_owner\_name](#input\_elasticache\_owner\_name) | n/a | `string` | n/a | yes |
-| <a name="input_elasticache_preset"></a> [elasticache\_preset](#input\_elasticache\_preset) | n/a | `string` | n/a | yes |
+| <a name="input_elasticache_preset"></a> [elasticache\_preset](#input\_elasticache\_preset) | n/a | `bool` | n/a | yes |
 | <a name="input_elasticache_shared"></a> [elasticache\_shared](#input\_elasticache\_shared) | n/a | `string` | n/a | yes |
-| <a name="input_elasticsearch_dashbaord_name"></a> [elasticsearch\_dashbaord\_name](#input\_elasticsearch\_dashbaord\_name) | n/a | `string` | n/a | yes |
+| <a name="input_elasticsearch_dashboard_name"></a> [elasticsearch\_dashboard\_name](#input\_elasticsearch\_dashboard\_name) | n/a | `string` | n/a | yes |
 | <a name="input_elasticsearch_owner_name"></a> [elasticsearch\_owner\_name](#input\_elasticsearch\_owner\_name) | n/a | `string` | n/a | yes |
 | <a name="input_elasticsearch_preset"></a> [elasticsearch\_preset](#input\_elasticsearch\_preset) | n/a | `bool` | n/a | yes |
 | <a name="input_elasticsearch_shared"></a> [elasticsearch\_shared](#input\_elasticsearch\_shared) | n/a | `string` | n/a | yes |
-| <a name="input_msk_dashbaord_name"></a> [msk\_dashbaord\_name](#input\_msk\_dashbaord\_name) | n/a | `string` | n/a | yes |
+| <a name="input_msk_dashboard_name"></a> [msk\_dashboard\_name](#input\_msk\_dashboard\_name) | n/a | `string` | n/a | yes |
 | <a name="input_msk_owner_name"></a> [msk\_owner\_name](#input\_msk\_owner\_name) | n/a | `string` | n/a | yes |
 | <a name="input_msk_preset"></a> [msk\_preset](#input\_msk\_preset) | n/a | `bool` | n/a | yes |
 | <a name="input_msk_shared"></a> [msk\_shared](#input\_msk\_shared) | n/a | `string` | n/a | yes |
-| <a name="input_rds_dashbaord_name"></a> [rds\_dashbaord\_name](#input\_rds\_dashbaord\_name) | n/a | `string` | n/a | yes |
+| <a name="input_rds_dashboard_name"></a> [rds\_dashboard\_name](#input\_rds\_dashboard\_name) | n/a | `string` | n/a | yes |
 | <a name="input_rds_owner_name"></a> [rds\_owner\_name](#input\_rds\_owner\_name) | n/a | `string` | n/a | yes |
 | <a name="input_rds_preset"></a> [rds\_preset](#input\_rds\_preset) | n/a | `bool` | n/a | yes |
 | <a name="input_rds_shared"></a> [rds\_shared](#input\_rds\_shared) | n/a | `string` | n/a | yes |
-| <a name="input_s3_dashbaord_name"></a> [s3\_dashbaord\_name](#input\_s3\_dashbaord\_name) | n/a | `string` | n/a | yes |
+| <a name="input_s3_dashboard_name"></a> [s3\_dashboard\_name](#input\_s3\_dashboard\_name) | n/a | `string` | n/a | yes |
 | <a name="input_s3_owner_name"></a> [s3\_owner\_name](#input\_s3\_owner\_name) | n/a | `string` | n/a | yes |
 | <a name="input_s3_preset"></a> [s3\_preset](#input\_s3\_preset) | n/a | `bool` | n/a | yes |
 | <a name="input_s3_shared"></a> [s3\_shared](#input\_s3\_shared) | n/a | `string` | n/a | yes |
