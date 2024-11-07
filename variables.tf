@@ -77,3 +77,18 @@ variable "elasticache_dashboard_name" {
 variable "elasticache_preset" {
   type = bool
 }
+
+variable "dynamodb_owner_name" {
+  type = string
+}
+variable "dynamodb_shared" {
+  type = string
+}
+
+variable "dynamodb_dashboard_name" {
+  type = string
+}
+
+variable "dynamodb_preset" {
+  type = bool
+}
