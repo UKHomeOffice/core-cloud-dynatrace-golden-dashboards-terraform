@@ -11,118 +11,19 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
         "preset" : var.rds_preset
       },
    "tiles": [
-    {
-      "name": "FreeableMemory",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 0,
-        "left": 38,
-        "width": 266,
-        "height": 266
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "Data explorer results",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "ext:cloud.aws.rds.freeableMemoryByRegionEngineName",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "GRAPH_CHART",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "displayName": "",
-            "visible": true
-          },
-          "yAxes": [
-            {
-              "displayName": "",
-              "visible": true,
-              "min": "AUTO",
-              "max": "AUTO",
-              "position": "LEFT",
-              "queryIds": [
-                "A"
-              ],
-              "defaultAxis": true
-            }
-          ]
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=null&(ext:cloud.aws.rds.freeableMemoryByRegionEngineName:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
-      ]
-    },
-    {
+   {
       "name": "DatabaseConnections",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 0,
-        "left": 380,
-        "width": 304,
+        "top": 38,
+        "left": 494,
+        "width": 418,
         "height": 266
       },
-      "tileFilter": {},
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
       "isAutoRefreshDisabled": false,
       "customName": "DatabaseConnections",
       "queries": [
@@ -207,112 +108,19 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
       ]
     },
     {
-      "name": "CPUUtilization",
-      "nameSize": "medium",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 0,
-        "left": 760,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "CPUUtilization",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "ext:cloud.aws.ec.cpuUtilization",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "SINGLE_VALUE",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "visible": true
-          },
-          "yAxes": []
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.ec.cpuUtilization:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.ec.cpuUtilization:splitBy():sort(value(auto,descending)):limit(20))"
-      ]
-    },
-    {
       "name": "FreeStorageSpace",
       "nameSize": "medium",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
         "top": 342,
-        "left": 0,
-        "width": 304,
+        "left": 38,
+        "width": 418,
         "height": 304
       },
-      "tileFilter": {},
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
       "isAutoRefreshDisabled": false,
       "customName": "FreeStorageSpace",
       "queries": [
@@ -391,110 +199,18 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
       ]
     },
     {
-      "name": "ReadLatency",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 342,
-        "left": 380,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "ReadLatency",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "ext:cloud.aws.rds.readLatency",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "SINGLE_VALUE",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "visible": true
-          },
-          "yAxes": []
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.rds.readLatency:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.rds.readLatency:splitBy():sort(value(auto,descending)):limit(20))"
-      ]
-    },
-    {
       "name": "WriteLatency",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 342,
-        "left": 760,
+        "top": 1140,
+        "left": 1292,
         "width": 304,
         "height": 304
       },
-      "tileFilter": {},
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
       "isAutoRefreshDisabled": false,
       "customName": "WriteLatency",
       "queries": [
@@ -579,19 +295,446 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
       ]
     },
     {
+      "name": "CPUutilization",
+      "nameSize": "medium",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 950,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.rds.cpuUtilization",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "unitTransform": "auto",
+            "valueFormat": "auto",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "AREA"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "value": 50,
+                "color": "#f5d30f"
+              },
+              {
+                "value": 80,
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(ext:cloud.aws.rds.cpuUtilization:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
+      "name": "FreeableMemory",
+      "nameSize": "large",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 38,
+        "width": 418,
+        "height": 266
+      },
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.rds.freeableMemory",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "unitTransform": "auto",
+            "valueFormat": "auto",
+            "properties": {
+              "color": "ORANGE",
+              "seriesType": "LINE"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(ext:cloud.aws.rds.freeableMemory:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
+      "name": "ReadLatency",
+      "nameSize": "medium",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 342,
+        "left": 494,
+        "width": 418,
+        "height": 304
+      },
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.rds.readLatency",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(ext:cloud.aws.rds.readLatency:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
+      "name": "WriteLatency",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 342,
+        "left": 950,
+        "width": 418,
+        "height": 304
+      },
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.rds.writeLatency",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(ext:cloud.aws.rds.writeLatency:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
       "name": "NetworkReceiveThroughput",
       "nameSize": "medium",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
         "top": 722,
-        "left": 0,
-        "width": 304,
+        "left": 494,
+        "width": 418,
         "height": 304
       },
-      "tileFilter": {},
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
       "isAutoRefreshDisabled": false,
-      "customName": "NetworkReceiveThroughput",
+      "customName": "Data explorer results",
       "queries": [
         {
           "id": "A",
@@ -611,7 +754,7 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
         }
       ],
       "visualConfig": {
-        "type": "SINGLE_VALUE",
+        "type": "GRAPH_CHART",
         "global": {},
         "rules": [
           {
@@ -624,17 +767,25 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
         ],
         "axes": {
           "xAxis": {
+            "displayName": "",
             "visible": true
           },
-          "yAxes": []
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
         },
         "heatmapSettings": {
           "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
         },
         "thresholds": [
           {
@@ -669,24 +820,24 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.rds.networkReceiveThroughput:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.rds.networkReceiveThroughput:splitBy():sort(value(auto,descending)):limit(20))"
+        "resolution=null&(ext:cloud.aws.rds.networkReceiveThroughput:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "NetworkTransmitThroughpu",
-      "nameSize": "medium",
+      "name": "NetworkTransmitThroughput",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
         "top": 722,
-        "left": 380,
-        "width": 304,
+        "left": 38,
+        "width": 418,
         "height": 304
       },
-      "tileFilter": {},
+      "tileFilter": {
+        "timeframe": "Last 2 hours"
+      },
       "isAutoRefreshDisabled": false,
-      "customName": "NetworkTransmitThroughpu",
+      "customName": "Data explorer results",
       "queries": [
         {
           "id": "A",
@@ -706,7 +857,7 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
         }
       ],
       "visualConfig": {
-        "type": "SINGLE_VALUE",
+        "type": "GRAPH_CHART",
         "global": {},
         "rules": [
           {
@@ -719,17 +870,25 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
         ],
         "axes": {
           "xAxis": {
+            "displayName": "",
             "visible": true
           },
-          "yAxes": []
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
         },
         "heatmapSettings": {
           "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
         },
         "thresholds": [
           {
@@ -764,8 +923,7 @@ resource "dynatrace_json_dashboard" "comos_rds_dasboard_terraform" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.rds.networkTransmitThroughput:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.rds.networkTransmitThroughput:splitBy():sort(value(auto,descending)):limit(20))"
+        "resolution=null&(ext:cloud.aws.rds.networkTransmitThroughput:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     }
   ]
