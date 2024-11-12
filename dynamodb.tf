@@ -1,586 +1,22 @@
-resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
+resource "dynatrace_json_dashboard" "cosmo_dynamodb_dashboard_template" {
    contents = jsonencode(
     {
     "dashboardMetadata": {
-      "name": var.elasticsearch_dashboard_name
-      "shared": var.elasticsearch_shared
-      "owner": var.elasticsearch_owner_name
+      "name": var.dynamodb_dashboard_name
+      "shared": var.dynamodb_shared
+      "owner": var.dynamodb_owner_name
       "tags": [
         ""
       ],
-      "preset": var.elasticsearch_preset
+      "preset": var.dynamodb_preset
     },
-   "tiles": [
+    "tiles": [
     {
-      "name": "ClusterStatus.green",
+      "name": "ConditionalCheckFailedRequests",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 0,
-        "left": 0,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "Single value",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "ext:cloud.aws.es.clusterStatusgreenMinimumByClientId",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "SINGLE_VALUE",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "visible": true
-          },
-          "yAxes": []
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.es.clusterStatusgreenMinimumByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.es.clusterStatusgreenMinimumByClientId:splitBy():sort(value(auto,descending)):limit(20))"
-      ]
-    },
-    {
-      "name": "ClusterStatus.yellow",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 0,
-        "left": 304,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "Single value",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "ext:cloud.aws.es.clusterStatusyellowMaximumByClientId",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "SINGLE_VALUE",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "visible": true
-          },
-          "yAxes": []
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.es.clusterStatusyellowMaximumByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.es.clusterStatusyellowMaximumByClientId:splitBy():sort(value(auto,descending)):limit(20))"
-      ]
-    },
-    {
-      "name": "ClusterStatus.red",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 0,
-        "left": 608,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "Single value",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "ext:cloud.aws.es.clusterStatusredMaximumByClientId",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "SINGLE_VALUE",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "visible": true
-          },
-          "yAxes": []
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.es.clusterStatusredMaximumByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.es.clusterStatusredMaximumByClientId:splitBy():sort(value(auto,descending)):limit(20))"
-      ]
-    },
-    {
-      "name": "Shards.active",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 304,
-        "left": 0,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "Single value",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "builtin:tech.elasticsearch.local.active_shards",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "SINGLE_VALUE",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "visible": true
-          },
-          "yAxes": []
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=Inf&(builtin:tech.elasticsearch.local.active_shards:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(builtin:tech.elasticsearch.local.active_shards:splitBy():sort(value(auto,descending)):limit(20))"
-      ]
-    },
-    {
-      "name": "Shards.delayedUnassigned",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 304,
-        "left": 304,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "Single value",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "builtin:tech.elasticsearch.local.delayed_unassigned_shards",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "SINGLE_VALUE",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "visible": true
-          },
-          "yAxes": []
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=Inf&(builtin:tech.elasticsearch.local.delayed_unassigned_shards:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(builtin:tech.elasticsearch.local.delayed_unassigned_shards:splitBy():sort(value(auto,descending)):limit(20))"
-      ]
-    },
-    {
-      "name": "Nodes",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 304,
-        "left": 608,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false,
-      "customName": "Single value",
-      "queries": [
-        {
-          "id": "A",
-          "metric": "ext:cloud.aws.es.nodesByClientId",
-          "spaceAggregation": "AUTO",
-          "timeAggregation": "DEFAULT",
-          "splitBy": [],
-          "sortBy": "DESC",
-          "sortByDimension": "",
-          "filterBy": {
-            "nestedFilters": [],
-            "criteria": []
-          },
-          "limit": 20,
-          "rate": "NONE",
-          "enabled": true
-        }
-      ],
-      "visualConfig": {
-        "type": "SINGLE_VALUE",
-        "global": {},
-        "rules": [
-          {
-            "matcher": "A:",
-            "properties": {
-              "color": "DEFAULT"
-            },
-            "seriesOverrides": []
-          }
-        ],
-        "axes": {
-          "xAxis": {
-            "visible": true
-          },
-          "yAxes": []
-        },
-        "heatmapSettings": {
-          "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
-        },
-        "thresholds": [
-          {
-            "axisTarget": "LEFT",
-            "rules": [
-              {
-                "color": "#7dc540"
-              },
-              {
-                "color": "#f5d30f"
-              },
-              {
-                "color": "#dc172a"
-              }
-            ],
-            "visible": true
-          }
-        ],
-        "tableSettings": {
-          "hiddenColumns": []
-        },
-        "graphChartSettings": {
-          "connectNulls": false
-        },
-        "honeycombSettings": {
-          "showHive": true,
-          "showLegend": true,
-          "showLabels": false
-        }
-      },
-      "queriesSettings": {
-        "resolution": ""
-      },
-      "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.es.nodesByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.es.nodesByClientId:splitBy():sort(value(auto,descending)):limit(20))"
-      ]
-    },
-    {
-      "name": "CPUUtilization",
-      "tileType": "DATA_EXPLORER",
-      "configured": true,
-      "bounds": {
-        "top": 608,
+        "top": 38,
         "left": 0,
         "width": 304,
         "height": 304
@@ -591,7 +27,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.ec.cpuUtilization",
+          "metric": "ext:cloud.aws.dynamodb.ConditionalCheckFailedRequestsSum",
           "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
@@ -638,13 +74,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
           ]
         },
         "heatmapSettings": {
-          "yAxis": "VALUE",
-          "showLabels": false
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
+          "yAxis": "VALUE"
         },
         "thresholds": [
           {
@@ -679,15 +109,15 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=null&(ext:cloud.aws.ec.cpuUtilization:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+        "resolution=null&(ext:cloud.aws.dynamodb.ConditionalCheckFailedRequestsSum:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "FreeStorageSpace",
+      "name": "ConsumedReadCapacityUnits",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 608,
+        "top": 38,
         "left": 304,
         "width": 304,
         "height": 304
@@ -698,10 +128,17 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.es.freeStorageSpaceByClientId",
+          "metric": "ext:cloud.aws.dynamodb.consumedReadCapacityUnitsSum",
           "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
           "rate": "NONE",
           "enabled": true
         }
@@ -738,13 +175,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
           ]
         },
         "heatmapSettings": {
-          "yAxis": "VALUE",
-          "showLabels": false
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
+          "yAxis": "VALUE"
         },
         "thresholds": [
           {
@@ -779,15 +210,15 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=null&(ext:cloud.aws.es.freeStorageSpaceByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+        "resolution=null&(ext:cloud.aws.dynamodb.consumedReadCapacityUnitsSum:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "JVMMemoryPressure",
+      "name": "ConsumedWriteCapacityUnits",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 608,
+        "top": 38,
         "left": 608,
         "width": 304,
         "height": 304
@@ -798,8 +229,8 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.es.masterJVMMemoryPressureMaximumByClientId",
-          "spaceAggregation": "COUNT",
+          "metric": "ext:cloud.aws.dynamodb.consumedWriteCapacityUnitsSum",
+          "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
           "sortBy": "DESC",
@@ -845,13 +276,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
           ]
         },
         "heatmapSettings": {
-          "yAxis": "VALUE",
-          "showLabels": false
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
+          "yAxis": "VALUE"
         },
         "thresholds": [
           {
@@ -886,39 +311,26 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=null&(ext:cloud.aws.es.masterJVMMemoryPressureMaximumByClientId:splitBy():count:sort(value(avg,descending)):limit(20)):limit(100):names"
+        "resolution=null&(ext:cloud.aws.dynamodb.consumedWriteCapacityUnitsSum:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "Dedicated master node metrics",
-      "tileType": "HEADER",
-      "configured": true,
-      "bounds": {
-        "top": 1216,
-        "left": 0,
-        "width": 380,
-        "height": 38
-      },
-      "tileFilter": {},
-      "isAutoRefreshDisabled": false
-    },
-    {
-      "name": "MasterCPUUtilization",
+      "name": "ReadThrottleEvents",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 1254,
-        "left": 0,
+        "top": 38,
+        "left": 912,
         "width": 304,
         "height": 304
       },
       "tileFilter": {},
       "isAutoRefreshDisabled": false,
-      "customName": "Single value",
+      "customName": "Data explorer results",
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.es.masterCPUUtilizationAverageByClientId",
+          "metric": "ext:cloud.aws.dynamodb.ReadThrottleEventsSum",
           "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
@@ -934,7 +346,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         }
       ],
       "visualConfig": {
-        "type": "SINGLE_VALUE",
+        "type": "GRAPH_CHART",
         "global": {},
         "rules": [
           {
@@ -947,17 +359,25 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         ],
         "axes": {
           "xAxis": {
+            "displayName": "",
             "visible": true
           },
-          "yAxes": []
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
         },
         "heatmapSettings": {
           "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
         },
         "thresholds": [
           {
@@ -992,27 +412,127 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.es.masterCPUUtilizationAverageByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.es.masterCPUUtilizationAverageByClientId:splitBy():sort(value(auto,descending)):limit(20))"
+        "resolution=null&(ext:cloud.aws.dynamodb.ReadThrottleEventsSum:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "MasterJVMMemoryPressure",
+      "name": "ReturnedItemCount",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 1254,
+        "top": 342,
+        "left": 0,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.dynamodb.returnedItemCountSumByOperation",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(ext:cloud.aws.dynamodb.returnedItemCountSumByOperation:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
+      "name": "SuccessfulRequestLatency",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 342,
         "left": 304,
         "width": 304,
         "height": 304
       },
       "tileFilter": {},
       "isAutoRefreshDisabled": false,
-      "customName": "Single value",
+      "customName": "Data explorer results",
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.es.masterJVMMemoryPressureMaximumByClientId",
+          "metric": "ext:cloud.aws.dynamodb.successfulRequestLatencyByOperation",
           "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
@@ -1028,7 +548,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         }
       ],
       "visualConfig": {
-        "type": "SINGLE_VALUE",
+        "type": "GRAPH_CHART",
         "global": {},
         "rules": [
           {
@@ -1041,17 +561,25 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         ],
         "axes": {
           "xAxis": {
+            "displayName": "",
             "visible": true
           },
-          "yAxes": []
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
         },
         "heatmapSettings": {
           "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
         },
         "thresholds": [
           {
@@ -1086,16 +614,15 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.es.masterJVMMemoryPressureMaximumByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.es.masterJVMMemoryPressureMaximumByClientId:splitBy():sort(value(auto,descending)):limit(20))"
+        "resolution=null&(ext:cloud.aws.dynamodb.successfulRequestLatencyByOperation:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "MasterReachableFromNode",
+      "name": "SystemErrors",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 1254,
+        "top": 342,
         "left": 608,
         "width": 304,
         "height": 304
@@ -1106,7 +633,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.es.masterReachableFromNodeMinimumByClientId",
+          "metric": "ext:cloud.aws.dynamodb.SystemErrorsSumByOperation",
           "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
@@ -1153,13 +680,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
           ]
         },
         "heatmapSettings": {
-          "yAxis": "VALUE",
-          "showLabels": false
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
+          "yAxis": "VALUE"
         },
         "thresholds": [
           {
@@ -1194,26 +715,127 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=null&(ext:cloud.aws.es.masterReachableFromNodeMinimumByClientId:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+        "resolution=null&(ext:cloud.aws.dynamodb.SystemErrorsSumByOperation:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "5xx",
+      "name": "ThrottledRequests",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 912,
+        "top": 342,
+        "left": 912,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.dynamodb.ThrottledRequestsSumByOperation",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(ext:cloud.aws.dynamodb.ThrottledRequestsSumByOperation:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
+      "name": "TransactionConflict",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 646,
         "left": 0,
         "width": 304,
         "height": 304
       },
       "tileFilter": {},
       "isAutoRefreshDisabled": false,
-      "customName": "5xx",
+      "customName": "Data explorer results",
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.es.5xxSumByClientId",
+          "metric": "ext:cloud.aws.dynamodb.TransactionConflictSum",
           "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
@@ -1229,7 +851,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         }
       ],
       "visualConfig": {
-        "type": "SINGLE_VALUE",
+        "type": "GRAPH_CHART",
         "global": {},
         "rules": [
           {
@@ -1242,17 +864,25 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         ],
         "axes": {
           "xAxis": {
+            "displayName": "",
             "visible": true
           },
-          "yAxes": []
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
         },
         "heatmapSettings": {
           "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
         },
         "thresholds": [
           {
@@ -1287,27 +917,26 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.es.\"5xxSumByClientId\":splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.es.\"5xxSumByClientId\":splitBy():sort(value(auto,descending)):limit(20))"
+        "resolution=null&(ext:cloud.aws.dynamodb.TransactionConflictSum:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "4xx",
+      "name": "UserErrors",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {
-        "top": 912,
+        "top": 646,
         "left": 304,
         "width": 304,
         "height": 304
       },
       "tileFilter": {},
       "isAutoRefreshDisabled": false,
-      "customName": "4xx",
+      "customName": "Data explorer results",
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.es.4xxSumByClientId",
+          "metric": "ext:cloud.aws.dynamodb.UserErrorsSum",
           "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
@@ -1323,7 +952,7 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         }
       ],
       "visualConfig": {
-        "type": "SINGLE_VALUE",
+        "type": "GRAPH_CHART",
         "global": {},
         "rules": [
           {
@@ -1336,17 +965,25 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         ],
         "axes": {
           "xAxis": {
+            "displayName": "",
             "visible": true
           },
-          "yAxes": []
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
         },
         "heatmapSettings": {
           "yAxis": "VALUE"
-        },
-        "singleValueSettings": {
-          "showTrend": true,
-          "showSparkLine": true,
-          "linkTileColorToThreshold": true
         },
         "thresholds": [
           {
@@ -1381,11 +1018,110 @@ resource "dynatrace_json_dashboard" "cosmo_elasticsearch_dashboard_template" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=Inf&(ext:cloud.aws.es.\"4xxSumByClientId\":splitBy():sort(value(auto,descending)):limit(20)):limit(100):names",
-        "resolution=null&(ext:cloud.aws.es.\"4xxSumByClientId\":splitBy():sort(value(auto,descending)):limit(20))"
+        "resolution=null&(ext:cloud.aws.dynamodb.UserErrorsSum:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+      ]
+    },
+    {
+      "name": "WriteThrottleEvents",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 646,
+        "left": 608,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "ext:cloud.aws.dynamodb.WriteThrottleEventsSum",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "sortByDimension": "",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 20,
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A"
+              ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": []
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(ext:cloud.aws.dynamodb.WriteThrottleEventsSum:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     }
   ]
-}
-   )
-}
+})
+}  

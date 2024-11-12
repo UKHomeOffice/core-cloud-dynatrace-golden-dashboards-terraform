@@ -1,14 +1,14 @@
-resource "dynatrace_json_dashboard" "comos_msk_dasboard_terraform" {
+resource "dynatrace_json_dashboard" "comos_msk_dashboard_terraform" {
   contents = jsonencode(
     {
       "dashboardMetadata" : {
-        "name" : var.mks_dashbaord_name
-        "shared" : var.mks_shared
-        "owner" : var.mks_owner_name
+        "name" : var.msk_dashboard_name
+        "shared" : var.msk_shared
+        "owner" : var.msk_owner_name
         "tags" : [
           "cosmos"
         ],
-        "preset" : var.mks_preset
+        "preset" : var.msk_preset
       },
     "tiles": [
         {
@@ -755,7 +755,7 @@ resource "dynatrace_json_dashboard" "comos_msk_dasboard_terraform" {
       "queries": [
         {
           "id": "A",
-          "metric": "ext:cloud.aws.kafka.networkRxPacketsByBrokerID",
+          "metric": "ext:cloud.aws.kafka.networkTxPacketsByBrokerID",
           "spaceAggregation": "AUTO",
           "timeAggregation": "DEFAULT",
           "splitBy": [],
@@ -843,11 +843,11 @@ resource "dynatrace_json_dashboard" "comos_msk_dasboard_terraform" {
         "resolution": ""
       },
       "metricExpressions": [
-        "resolution=null&(ext:cloud.aws.kafka.networkRxPacketsByBrokerID:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
+        "resolution=null&(ext:cloud.aws.kafka.networkTxPacketsByBrokerID:splitBy():sort(value(auto,descending)):limit(20)):limit(100):names"
       ]
     },
     {
-      "name": "NetworkTxPackets",
+      "name": "NetworkRxPackets",
       "tileType": "DATA_EXPLORER",
       "configured": true,
       "bounds": {

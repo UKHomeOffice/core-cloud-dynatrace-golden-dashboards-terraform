@@ -1,8 +1,7 @@
-
 variable "tenant_vars" {
   type = any
 }
-variable "s3_dashbaord_name" {
+variable "s3_dashboard_name" {
   type = string
 }
 variable "s3_owner_name" {
@@ -14,7 +13,7 @@ variable "s3_shared" {
 variable "s3_preset" {
   type = bool
 }
-variable "rds_dashbaord_name" {
+variable "rds_dashboard_name" {
   type = string
 }
 variable "rds_owner_name" {
@@ -26,19 +25,19 @@ variable "rds_shared" {
 variable "rds_preset" {
   type = bool
 }
-variable "mks_dashbaord_name" {
+variable "msk_dashboard_name" {
   type = string
 }
-variable "mks_owner_name" {
+variable "msk_owner_name" {
   type = string
 }
-variable "mks_shared" {
+variable "msk_shared" {
   type = string
 }
-variable "mks_preset" {
+variable "msk_preset" {
   type = bool
 }
-variable "cloudfront_dashbaord_name" {
+variable "cloudfront_dashboard_name" {
   type = string
 }
 variable "cloudfront_owner_name" {
@@ -50,7 +49,7 @@ variable "cloudfront_shared" {
 variable "cloudfront_preset" {
   type = bool
 }
-variable "elasticsearch_dashbaord_name" {
+variable "elasticsearch_dashboard_name" {
   type = string
 }
 variable "elasticsearch_owner_name" {
@@ -94,4 +93,28 @@ variable "slack_notification_enabled" {
 }
 variable "slack_notification_name" {
   type = string
+}
+variable "elasticache_owner_name" {
+  type = string
+}
+variable "elasticache_shared" {
+  type = string
+}
+variable "elasticache_dashboard_name" {
+  type = string
+}
+variable "elasticache_preset" {
+  type = bool
+}
+variable "dynamodb_owner_name" {
+  type = string
+}
+variable "dynamodb_shared" {
+  type = string
+}
+variable "dynamodb_dashboard_name" {
+  type = string
+}
+variable "dynamodb_preset" {
+  type = bool
 }
