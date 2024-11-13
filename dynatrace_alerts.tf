@@ -4,16 +4,16 @@ resource "dynatrace_alerting" "my_alerting_profile" {
     filter {
       custom {
         description {
-          operator       = "CONTAINS"
-          value          = "CapacityUnits"
-          case_sensitive = true
-          enabled        = true
+          operator       = var.operator
+          value          = var.value
+          case_sensitive = var.case_sensitive
+          enabled        = var.enabled
         }
         title {
-          operator       = "CONTAINS"
-          value          = "CapacityUnits"
-          case_sensitive = true
-          enabled        = true
+          operator       = var.operator
+          value          = var.value
+          case_sensitive = var.case_sensitive
+          enabled        = var.enabled
 
         }
 
@@ -22,10 +22,10 @@ resource "dynatrace_alerting" "my_alerting_profile" {
   }
   rules {
     rule {
-      include_mode     = "INCLUDE_ALL"
-      tags             = ["test:test"]
-      delay_in_minutes = 1
-      severity_level   = "CUSTOM_ALERT"
+      include_mode     = var.include_mode
+      tags             = var.tags
+      delay_in_minutes = var.delay_in_minutes
+      severity_level   = var.severity_level
     }
   }
 }

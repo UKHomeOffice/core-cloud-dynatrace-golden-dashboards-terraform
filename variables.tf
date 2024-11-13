@@ -94,27 +94,46 @@ variable "slack_notification_enabled" {
 variable "slack_notification_name" {
   type = string
 }
-variable "elasticache_owner_name" {
+variable "operator" {
   type = string
 }
-variable "elasticache_shared" {
+variable "value" {
   type = string
 }
-variable "elasticache_dashboard_name" {
-  type = string
-}
-variable "elasticache_preset" {
+variable "case_sensitive" {
   type = bool
 }
-variable "dynamodb_owner_name" {
-  type = string
-}
-variable "dynamodb_shared" {
-  type = string
-}
-variable "dynamodb_dashboard_name" {
-  type = string
-}
-variable "dynamodb_preset" {
+variable "enabled" {
   type = bool
+}
+variable "include_mode" {
+  type = string
+}
+variable "tags" {
+  type = list(string)
+}
+
+variable "severity_level" {
+  type = string
+}
+variable "management_zone_name" {
+  type = string
+}
+variable "rule_type" {
+  type = string
+}
+variable "entity_selector" {
+  type = string
+}
+variable "entity_type" {
+  type = string
+}
+variable "key" {
+  type = string
+}
+variable "string_value" {
+  type = string
+}
+variable "delay_in_minutes" {
+  type = string
 }

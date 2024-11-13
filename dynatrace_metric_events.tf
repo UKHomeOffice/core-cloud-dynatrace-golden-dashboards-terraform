@@ -1,35 +1,35 @@
 # Creates a Dynatrace Management Zone
 resource "dynatrace_management_zone_v2" "Alerting_Test_MZ" {
-  name = "Alerting_Test_MZ"
+  name = var.management_zone_name
   rules {
     rule {
-      type            = "ME"
-      enabled         = true
-      entity_selector = ""
+      type            = var.rule_type
+      enabled         = var.enabled
+      entity_selector = var.entity_selector
       attribute_rule {
-        entity_type = "WEB_APPLICATION"
+        entity_type = var.entity_type
         attribute_conditions {
           condition {
-            case_sensitive = false
-            key            = "WEB_APPLICATION_NAME"
-            operator       = "CONTAINS"
-            string_value   = "test"
+            case_sensitive = var.case_sensitive
+            key            = var.key
+            operator       = var.operator
+            string_value   = var.string_value
           }
         }
       }
     }
     rule {
-      type            = "ME"
-      enabled         = true
-      entity_selector = ""
+      type            = var.rule_type
+      enabled         = var.enabled
+      entity_selector = var.entity_selector
       attribute_rule {
-        entity_type = "WEB_APPLICATION"
+        entity_type = var.entity_type
         attribute_conditions {
           condition {
             case_sensitive = true
-            key            = "WEB_APPLICATION_NAME"
-            operator       = "CONTAINS"
-            string_value   = "www.test.com"
+            key            = var.key
+            operator       = var.operator
+            string_value   = var.string_value
           }
         }
       }
