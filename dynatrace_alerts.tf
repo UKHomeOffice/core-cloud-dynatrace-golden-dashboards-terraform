@@ -1,5 +1,5 @@
 resource "dynatrace_alerting" "my_alerting_profile" {
-  name = var.aleritng_profile_name
+  name = var.alerting_profile_name
   filters {
     filter {
       custom {

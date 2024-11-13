@@ -90,7 +90,7 @@ variable "dynamodb_dashboard_name" {
 variable "dynamodb_preset" {
   type = bool
 }
-variable "aleritng_profile_name" {
+variable "alerting_profile_name" {
   type = string
 }
 variable "email_notification_name" {
