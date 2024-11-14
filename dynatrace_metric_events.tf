@@ -1,41 +1,3 @@
-# Creates a Dynatrace Management Zone
-resource "dynatrace_management_zone_v2" "Alerting_Test_MZ" {
-  name = var.management_zone_name
-  rules {
-    rule {
-      type            = var.rule_type
-      enabled         = var.enabled
-      entity_selector = var.entity_selector
-      attribute_rule {
-        entity_type = var.entity_type
-        attribute_conditions {
-          condition {
-            case_sensitive = var.case_sensitive
-            key            = var.key
-            operator       = var.operator
-            string_value   = var.string_value
-          }
-        }
-      }
-    }
-    rule {
-      type            = var.rule_type
-      enabled         = var.enabled
-      entity_selector = var.entity_selector
-      attribute_rule {
-        entity_type = var.entity_type
-        attribute_conditions {
-          condition {
-            case_sensitive = true
-            key            = var.key
-            operator       = var.operator
-            string_value   = var.string_value
-          }
-        }
-      }
-    }
-  }
-}
 resource "dynatrace_metric_events" "dynatrace_readcapacityunitssum" {
   enabled                    = var.tenant_vars.enabled
   event_entity_dimension_key = var.tenant_vars.event_entity_dimension_key
@@ -77,11 +39,6 @@ resource "dynatrace_metric_events" "dynatrace_readcapacityunitssum" {
           type     = var.tenant_vars.entity_filter_condition2_type
           operator = var.tenant_vars.entity_filter_condition2_operator
           value    = var.tenant_vars.entity_filter_condition2_value
-        }
-        condition {
-          type     = "MANAGEMENT_ZONE"
-          operator = "EQUALS"
-          value    = "Alerting_Test_MZ"
         }
         #  condition {
         #    type     = "HOST_GROUP_NAME"  re-visit when we need host group
