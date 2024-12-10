@@ -40,7 +40,7 @@ resource "dynatrace_webhook_notification" "snow_webhook_integration" {
   profile                = dynatrace_alerting.cosmos-snow-alerting-profile.id
   url                    = var.webhook_url
   insecure               = var.insecure
-  notify_event_merges    = var.notify_closed_problems
+  notify_event_merges    = var.notify_event_merges
   notify_closed_problems = var.notify_closed_problems
   payload                = var.payload
   use_oauth_2            = var.use_oauth_2
