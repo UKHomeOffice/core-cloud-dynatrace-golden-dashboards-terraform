@@ -112,12 +112,6 @@ variable "client_id" {
   description = "Client ID"
 }
 
-variable "client_secret" {
-  type = string
-  sensitive = true
-  description = "Client secret"
-}
-
 variable "payload" {
   type = string
   description = "The content of the notification message"

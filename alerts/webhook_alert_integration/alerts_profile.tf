@@ -34,6 +34,19 @@ resource "dynatrace_alerting" "cosmos-integration-alerting-profile" {
   }
 }
 
+data "aws_caller_identity" "current" {}
+
+data "aws_secretsmanager_secret" "snow_secret" {
+  arn = "arn:aws:secretsmanager:eu-west-2:${data.aws_caller_identity.current.account_id}:secret:test/snowIntegration-kP3kJ7"
+}
+
+data "aws_secretsmanager_secret_version" "current_secret" {
+  secret_id = data.aws_secretsmanager_secret.snow_secret.id
+}
+
+locals {
+  snow_client_secret = jsondecode(data.aws_secretsmanager_secret_version.current_secret.secret_string)
+}
 resource "dynatrace_webhook_notification" "snow_webhook_integration" {
   active                 = var.active
   name                   = var.integration_notification_name
@@ -47,6 +60,6 @@ resource "dynatrace_webhook_notification" "snow_webhook_integration" {
   oauth_2_credentials {
     access_token_url = var.access_token_url
     client_id        = var.client_id
-    client_secret    = var.client_secret
+    client_secret    = local.snow_client_secret["snow_client_secret"]
   }
 }
