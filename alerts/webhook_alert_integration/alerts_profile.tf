@@ -37,7 +37,7 @@ resource "dynatrace_alerting" "cosmos-integration-alerting-profile" {
 resource "dynatrace_webhook_notification" "snow_webhook_integration" {
   active                 = var.active
   name                   = var.integration_notification_name
-  profile                = dynatrace_alerting.cosmos-snow-alerting-profile.id
+  profile                = dynatrace_alerting.cosmos-integration-alerting-profile.id
   url                    = var.webhook_url
   insecure               = var.insecure
   notify_event_merges    = var.notify_event_merges
