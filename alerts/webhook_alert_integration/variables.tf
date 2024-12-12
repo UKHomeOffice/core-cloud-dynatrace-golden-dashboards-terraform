@@ -116,3 +116,9 @@ variable "payload" {
   type = string
   description = "The content of the notification message"
 }
+
+variable "client_secret" {
+  type = string
+  description = "Client secret"
+  sensitive = true
+}
