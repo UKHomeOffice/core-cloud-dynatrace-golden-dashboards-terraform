@@ -1,6 +1,6 @@
 # Archived
 
-This repository is not in use.
+This repository is not in use. Please use https://github.com/UKHomeOffice/core-cloud-dynatrace-environment-terraform
 
 
 # core-cloud-dynatrace-golden-dashboards-terraform
