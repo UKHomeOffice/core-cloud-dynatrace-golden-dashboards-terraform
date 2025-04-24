@@ -1,3 +1,8 @@
+# Archived
+
+This repository is not in use. Please use https://github.com/UKHomeOffice/core-cloud-dynatrace-environment-terraform
+
+
 # core-cloud-dynatrace-golden-dashboards-terraform
 
 Note: as we dont have any metrics in Dynatrace as of yet, these templates do not contain the dimensions for now, these will be updated once we have got metrics coming into dynatrace.
